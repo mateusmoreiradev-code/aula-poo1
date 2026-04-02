@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.ArrayList;
+
 
 public class Usuario {
     protected int idUsuario;
@@ -8,14 +7,9 @@ public class Usuario {
     public String email;
     private String senha;
     public String telefone;
-    public String tipoUsuario;
-//    public ArrayList<String> tipoUsuario = new ArrayList<>();
-//
-//    tipoUsuario.add("Cliente");
-//    tipoUsuario.add("Entregador");
-//    tipoUsuario.add("Admnistrador");
+    public TipoUsuario1 tipoUsuario;
 
-    public Usuario(int idUsuario, String nome, String CPF, String email, String senha, String telefone, String tipoUsuario){
+    public Usuario(int idUsuario, String nome, String CPF, String email, String senha, String telefone, TipoUsuario1 tipoUsuario){
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.CPF = CPF;
