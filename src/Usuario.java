@@ -8,12 +8,12 @@ public class Usuario {
     public String email;
     private String senha;
     public String telefone;
-    // public String tipoUsuario;
-    public ArrayList<String> tipoUsuario = new ArrayList<>();
-
-    tipoUsuario.add("Cliente");
-    tipoUsuario.add("Entregador");
-    tipoUsuario.add("Admnistrador");
+    public String tipoUsuario;
+//    public ArrayList<String> tipoUsuario = new ArrayList<>();
+//
+//    tipoUsuario.add("Cliente");
+//    tipoUsuario.add("Entregador");
+//    tipoUsuario.add("Admnistrador");
 
     public Usuario(int idUsuario, String nome, String CPF, String email, String senha, String telefone, String tipoUsuario){
         this.idUsuario = idUsuario;
