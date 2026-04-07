@@ -1,5 +1,3 @@
-
-
 public class Usuario {
     protected int idUsuario;
     public String nome;
