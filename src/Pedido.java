@@ -29,4 +29,8 @@ public class Pedido {
         double total = calcularTotal();
     }
 
+    public int getId() {
+        return idPedido;
+    }
+
 }
