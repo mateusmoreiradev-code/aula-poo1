@@ -10,4 +10,9 @@ public abstract class Entrega{
     }
 
     public abstract void realizarEntrega();
-}
+
+    public Pedido getPedido(){
+            return pedido;
+    }
+
+            }

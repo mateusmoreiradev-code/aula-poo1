@@ -13,11 +13,25 @@ public class Restaurante {
         this.enderecoRestaurante = enderecoRestaurante;
     }
 
-    public void adicionarProduto(Produto produto){
-        cardapio.add(produto);
+    public String getNomeRestaurante(){
+        return nomeRestaurante;
+    }    public void setNomeRestaurante(String nomeRestaurante){
+        this.nomeRestaurante = nomeRestaurante;
+    }
+
+    public String getEnderecoRestaurante(){
+        return  enderecoRestaurante;
+    }
+    public void setEnderecoRestaurante(String enderecoRestaurante){
+        this.enderecoRestaurante = enderecoRestaurante;
     }
 
     public List<Produto> getCardapio(){
         return cardapio;
     }
+
+    public void adicionarProduto(Produto produto){
+        cardapio.add(produto);
+    }
+
 }

@@ -7,6 +7,16 @@ public class Pedido {
     private Entregador entregador;
     private List<ItensPedido> itens = new ArrayList<>();
 
+    public Cliente getCliente(){
+        return cliente;
+    }
+    public Entregador getEntregador(){
+        return entregador;
+    }
+    public List<ItensPedido> getItens(){
+        return itens;
+    }
+
     public Pedido(int idPedido, Cliente cliente){
         this.idPedido = idPedido;
         this.cliente = cliente;
