@@ -1,12 +1,40 @@
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
 public class Main {
+    private static final Scanner sc = new Scanner(System.in);
+    private List<Cliente> cliente = new ArrayList<>();
+
+    private static int idUsuario = 1;
+
     public static void main(String[] args){
-        Cliente cliente = new Cliente(1, "Hadassa", "111-222-333-44", "hadassa@gmail.com", "senhaFraca(123)//", "(47)940028922", TipoUsuario1.CLIENTE, "Estrada Rio Pascoal, Santa Alice do Sul");
-        Entregador entregador = new Entregador(1, "José", "222-333-444-55", "joseentregador@gmail.com", "senhaforte123", "(47)936340589", TipoUsuario1.ENTREGADOR, true);
+        System.out.println("------Cadastro de Cliente------");
+        System.out.println("Digite o nome do cliente: ");
+        String nome = sc.nextLine();
 
-        System.out.println("------ Cliente ------");
-        System.out.println(cliente);
+        System.out.println("Digite o CPF: ");
+        String CPF = sc.nextLine();
 
-        System.out.println("\n------ Entregador ------");
-        System.out.println(entregador);
+        System.out.println("Digite o e-mail: ");
+        String email = sc.nextLine();
+
+        System.out.println("Digite a senha: ");
+        String senha = sc.nextLine();
+
+        System.out.println("Digite o telefone: ");
+        String telefone = sc.nextLine();
+
+        System.out.println("Digite o endereço: ");
+        String endereco = sc.nextLine();
+
+        TipoUsuario1 tipoUsuario = TipoUsuario1.CLIENTE;
+
+        Cliente cliente = new Cliente(idUsuario, nome, CPF, email, senha, telefone,tipoUsuario, endereco);
+
+        idUsuario++;
+
+        System.out.println("cliente cadastrado com sucesso!");
+        System.out.println("Clientes: "+ cliente);
     }
 }

@@ -59,6 +59,6 @@ public class Usuario {
         return telefone;
     }
     public void setTelefone(String telefone){
-        this.telefone = telefone
+        this.telefone = telefone;
     }
 }
