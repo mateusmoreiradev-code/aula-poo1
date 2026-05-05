@@ -4,6 +4,13 @@ public class ItensPedido {
     protected int quantidade;
     protected double precoUnitario;
 
+    public ItensPedido(int idItensPedido, Produto produto, int quantidade){
+        this.idItensPedido = idItensPedido;
+        this.produto = produto;
+        this.quantidade = quantidade;
+        this.precoUnitario = produto.getPreco();
+    }
+
     public int getQuantidade(){
         return quantidade;
     }
@@ -16,13 +23,6 @@ public class ItensPedido {
     }
     public void setPrecoUnitario(double precoUnitario){
         this.precoUnitario = precoUnitario;
-    }
-
-    public ItensPedido(int idItensPedido, Produto produto, int quantidade){
-        this.idItensPedido = idItensPedido;
-        this.produto = produto;
-        this.quantidade = quantidade;
-        this.precoUnitario = produto.getPreco();
     }
 
     public double getSubTotal(){
