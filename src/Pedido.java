@@ -39,6 +39,35 @@ public class Pedido {
         }
     }
 
+    public void removerItem(String nomeProduto){
+        if(!status.equals("EM ABERTO!")){
+            System.out.println("Não é possivel retirar itens do pedido, pois ele não está em aberto");
+        } else {
+            boolean removido = itens.removeIf(item -> item.getProduto().getNomeProduto().equalsIgnoreCase(nomeProduto));
+
+            if(removido){
+                System.out.println("Item "+ nomeProduto +" removido com sucesso!");
+            } else {
+                System.out.println("O produto "+ nomeProduto + " não foi encontrado!");
+            }
+        }
+    }
+
+    public void definirPagamento(Pagamento pagamento){
+        this.pagamento = pagamento;
+        System.out.println("Pagamento definido: " + pagamento.getPagamento());
+    }
+
+    public void definirEntrega(Entrega entrega) {
+        this.entrega = entrega;
+        System.out.println("Entrega definida: "+ entrega.getClass().getSimpleName());
+    }
+
+    public void definirEntregador(Entregador entregador){
+        this.entregador = entregador;
+        System.out.println("Entregador definido: "+ entregador.getNome());
+    }
+
     public double calcularTotal(){
         double total = 0;
 

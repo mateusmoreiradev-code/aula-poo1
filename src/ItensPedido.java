@@ -11,6 +11,9 @@ public class ItensPedido {
         this.precoUnitario = produto.getPreco();
     }
 
+    public Produto getProduto(){ return produto; }
+    public void setProduto(Produto produto){ this.produto = produto;}
+
     public int getQuantidade(){
         return quantidade;
     }
