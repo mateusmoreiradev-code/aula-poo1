@@ -68,6 +68,49 @@ public class Pedido {
         System.out.println("Entregador definido: "+ entregador.getNome());
     }
 
+    public void confirmarPedido(){
+        if(!status.equals("EM ABERTO!")){
+            System.out.println("O pedido não pode ser confirmado!");
+        } else {
+            if (cliente == null){
+                System.out.println("Cliente inválido");
+                return;
+            }
+
+            if(itens.isEmpty()){
+                System.out.println("Adicione itens no pedido para confirmar!");
+                return;
+            }
+
+            for (ItensPedido item: itens){
+                item.getProduto().reduzirEstoque(item.getQuantidade());
+            }
+
+            status = "CONFIRMADO";
+            System.out.println("Pedido confirmado");
+        }
+    }
+
+    public void iniciarEntrega(){
+        if(!status.equals("CONFIRMADO")){
+            System.out.println("Pedido precisa estar CONFIRMADO!");
+            return;
+        }
+
+        if(entregador == null){
+            System.out.println("Não foi definido um entregador!");
+            return;
+        }
+
+        if(entrega == null){
+            System.out.println("Não foi definida a entrega! ");
+            return;
+        }
+
+        status = "SAIU PARA ENTREGA";
+        System.out.println("Pedido saiu para entrega!");
+    }
+
     public double calcularTotal(){
         double total = 0;
 
@@ -79,7 +122,56 @@ public class Pedido {
 
     public void finalizarPedido(){
         double total = calcularTotal();
+
+        if(!status.equals("SAIU PARA ENTREGA")){
+            System.out.println("O pedido não saiu para entrega para ser finalizado!");
+            return;
+        }
+
+        if(pagamento == null){
+            System.out.println("Pagamento não definido!");
+            return;
+        }
+
+        System.out.println("\n- - - - FINALIZANDO O PEDIDO - - - -");
+
+        //Polimorfismo (interface)
+        pagamento.pago(total);
+        status = "ENTREGUE";
+
+        //Polimorfismo (classe abstrata)
+        entrega.iniciarEntrega();
+        entrega.realizarEntrega();
+
+        System.out.println("Pedido finalizado com sucesso!");
     }
+
+    public void exibirResumo(){
+        System.out.println("\n- - - - RESUMO DO PEDIDO - - - -");
+        System.out.println("Pedido #" + idPedido);
+        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("Endereço: " + cliente.getEndereco());
+        System.out.println("Status do pedido: " + status);
+
+        System.out.println("Itens: ");
+        for(ItensPedido item : itens){
+            System.out.println("- " + item);
+        }
+
+        System.out.println("Total: R$" + String.format("%.2f", calcularTotal()));
+
+        if(pagamento != null){
+            System.out.println("Pagamento: " + pagamento.getPagamento());
+        }
+
+        if(entregador != null){
+            System.out.println("Entregador: " + entregador.getNome());
+        }
+
+        if(entrega != null){
+            System.out.println("Entrega: "+ entrega.getClass().getSimpleName());
+        }
+    };
 
     public int getId() {
         return idPedido;
